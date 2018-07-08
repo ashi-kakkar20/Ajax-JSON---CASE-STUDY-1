@@ -1,0 +1,162 @@
+<!-- Case Study1- Building my own portfolio using AJAX and JSON -->
+<!-- Note: Html file name: CaseStudy1.html
+           CSS file name: Styles.css
+           Json file name: Portfolio JSON.JSON -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link type="text/css" rel="stylesheet" href="Styles.css"> <!-- Styles.css used for styling the page -->
+    <title>Document</title>
+
+    <script>
+        function ajax_get_json(){ // Created a function to fetch the portfolio data 
+         var Name = document.getElementById("name");
+         var Desg=document.getElementById("designation");
+         var AbtYourself=document.getElementById("aboutYourself");
+         var PerHeader=document.getElementById("PersonalityHeader");
+         var PerList=document.getElementById("PersonalityList");
+         var cntheader= document.getElementById("ContactHeader");
+         
+         var Street=document.getElementById("street");
+         var City=document.getElementById("city");
+         var State=document.getElementById("state");
+         var Country=document.getElementById("county");
+         var Email= document.getElementById("email");
+         var Website=document.getElementById("website");
+         var ContactInfo=document.getElementById("contactinfo");
+         
+         var BInfoHeader1= document.getElementById("basicinfoheader1");
+         var BInfoHeader2= document.getElementById("basicinfoheader2");
+
+         var BInfoPara=document.getElementById("BasicInfoPara");
+         var EducationHeader=document.getElementById("educationheader");
+         var EducationPara=document.getElementById("EducationPara");
+
+         var PEheader=document.getElementById("PEHeader");
+         var PEPara=document.getElementById("PEPara");
+
+         var hr = new XMLHttpRequest();
+         var url="https://api.myjson.com/bins/qiujy"; // Used the site "myjson.com" to generate an API for the JSON created
+                  
+         hr.open("GET",url, true);
+         hr.setRequestHeader("Content-type", "application/json", true);
+         hr.onreadystatechange = function() {
+             if(hr.readyState == 4 && hr.status == 200) {
+                 var data = JSON.parse(hr.responseText);
+                 Name.innerHTML = ""; Desg.innerHTML=""; AbtYourself.innerHTML=""; PerHeader.innerHTML="",PerList.innerHTML="";
+                 cntheader.innerHTML="";
+                 Street.innerHTML=""; City.innerHTML="";State.innerHTML="";Country.innerHTML=""; Website.innerHTML="";
+                 Email.innerHTML=""; ContactInfo.innerHTML=""; BInfoHeader1.innerHTML="";BInfoHeader2.innerHTML="";BInfoPara.innerHTML="";
+                 EducationHeader.innerHTML="";EducationPara.innerHTML="";PEheader.innerHTML="";PEPara.innerHTML="";
+                 
+                 //Populated all the JSON data in the respective fields
+                 for(var obj in data){
+                    Name.innerHTML = data.name ;
+                    Desg.innerHTML=data.designation;
+                    AbtYourself.innerHTML=data.aboutYourself;
+                    PerHeader.innerHTML=data.personalityheader;
+                                                   
+                    cntheader.innerHTML=data.contactheader;
+                    Street.innerHTML=data.contactDetails.street;
+                    City.innerHTML=data.contactDetails.city;
+                    State.innerHTML=data.contactDetails.state;
+                    Country.innerHTML= data.contactDetails.county;
+                    Email.innerHTML =data.contactDetails.email;
+                    Website.innerHTML=data.contactDetails.website;
+                    ContactInfo.innerHTML=data.contactDetails.contactInfo;
+                    
+                    BInfoHeader1.innerHTML=data.basicinfobold[0];
+                    BInfoHeader2.innerHTML=data.basicinfobold[1];
+                    
+                    BInfoPara.innerHTML=data.basicinfopara;
+                    EducationHeader.innerHTML=data.educationbold;
+
+                    PEheader.innerHTML=data.pebold;
+                 }
+
+                   for(i = 0; i <data.personalityUL.length ; i++)
+                     {
+                    PerList.innerHTML +="<li>" + data.personalityUL[i] + "</li>";
+                     }
+
+                    for(j=0; j<data.education.length; j++)
+                    {
+                        EducationPara.innerHTML += " <br />" + data.education[j] + "<br />" ;
+                    }
+                          
+                    for(k=0; k<data.pepara.length; k++)
+                    {
+                        PEPara.innerHTML += "<div>" + data.pepara[k] + "</div>" ;
+                        data.pepara[1] += "<br /> <br />";
+                    }
+             }
+         }
+         hr.send(null);
+         Name.innerHTML = "requesting...";
+     }
+         </script>
+</head>
+<body>
+    
+
+    <div class="content">
+        <div class="leftspace-section1">
+            <p class="para1" id="name"></p>
+            <p class ="para2" id="designation"> </p>
+            <p id="aboutYourself"></p>
+        </div>
+
+        <div class ="leftspace-section2">
+                <h4 class="personalityheader" id="PersonalityHeader"></h4>
+                <div class="personalityUL" id="PersonalityList">
+                </div>
+        </div>
+        <div class="leftspace-section3">
+                <h4 class="contactheader" id="ContactHeader"></h4>
+                <div class="contactpara">
+                <p id="street"></p>
+                <p id="city"></p>
+                <p id="state"></p>
+            
+                <div></div>
+                <p id="county"></p>
+                <div></div>
+                <p id="email"></p>
+            
+                <p id="website"></p> 
+                <p id="contactinfo"></p>
+                </div>
+        </div>
+
+        <div class="rightspace-section1">
+            <b class="basicinfobold" id="basicinfoheader1"></b>
+            <br/>
+            <b class="basicinfobold" id="basicinfoheader2"> </b>
+            <hr/>
+            <p class="basicinfopara" id="BasicInfoPara"></p>
+        </div>
+
+        <div class="rightspace-section2">
+            <b class="educationbold"  id="educationheader"></b>
+            <hr/> 
+            <p class="educationpara" id="EducationPara">              
+                            
+            </p>
+        </div>
+
+        <div class="rightspace-section3">
+            <b class="pebold" id="PEHeader"></b>
+            <hr/> 
+            <p class="pepara" id ="PEPara">
+                                  
+            </p>
+
+            </div>
+
+    </div>
+    <script>ajax_get_json();</script>
+</body>
+</html>

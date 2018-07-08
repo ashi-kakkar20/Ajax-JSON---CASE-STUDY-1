@@ -1,0 +1,33 @@
+{
+   "name" : "ASHINA KAKKAR",
+   "designation" : "SENIOR SYSTEMS ENGINEER",
+   "aboutYourself" : "As someone who can identify the needs of the Client for effective solutions. I'm committed to high quality service that ensures a positive experience",
+   "personalityheader": "PERSONALITY HIGHLIGHTS",
+  "personalityUL" : ["Zeal to learn","Motivated by problem solving",
+                     "Independent Worker","Works well with deadlines","Collaborative and Effecient"
+            ],
+   "contactheader": "CONTACT DETAILS",
+   "contactDetails" : {
+              "street" : "NGV, Kormangala",
+              "city" : "Bangalore",
+              "state" : "Karnataka",
+              "county" : "India",
+              "email" : "kakkarashina@gmail.com",
+              "website" : "www.ashinakakkar.com",
+              "contactInfo" : "123-456-789"
+             },
+   "basicinfobold": ["BASIC", "INFORMATION"],
+   "basicinfopara" : "I am a Senior Systems Engineer at Infosys Limited with over 4 years experience in handling multi national clients. My unique professional experience stems from years of providing excellent Client support,creative problem solving and building Client loyalty.",
+   "educationbold": "EDUCATION",
+   "education" : [
+          "BTech. in Computer Science, Amrita Vishwa Vidyapeetham, Coimbatore, 2010-2014",
+          "Kendriya Vidyalaya Meenambakkam, Chennai, 2010",
+          "Kendriya Vidyalaya Hebbal, Bangalore, 2008"
+             ],
+  
+  "pebold": "PROFESSIONAL EXPERIENCE",	
+  "pepara" : ["Senior Systems Engineer, Infosys Limited Bangalore. 2012-Present", "Independently handling a portfolio of 4 mission critical applications with end to end responsibility.",
+             "Systems Engineer, Infosys Limited Bangalore. 2010-2012 ", "Part of team providing applications development and management services for a portfolio of mission critical, compliant applications"
+             ]			
+       
+  }
